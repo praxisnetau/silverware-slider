@@ -1,0 +1,13 @@
+---
+Name: silverware-slider-styles
+---
+
+# Configure Bootstrap Styles:
+
+SilverWare\Grid\Frameworks\Bootstrap\Framework:
+  style_mappings:
+    slider:
+      item: slider-item
+      image: slider-image
+      caption: slider-caption
+      hide-mobile: d-none d-md-block

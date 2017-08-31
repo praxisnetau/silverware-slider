@@ -1,0 +1,11 @@
+---
+Name: silverware-slider
+---
+
+# Configure Content Controller:
+
+SilverStripe\CMS\Controllers\ContentController:
+  required_js:
+    - silverware-slider/client/dist/js/bundle.js
+  required_css:
+    - silverware-slider/client/dist/styles/bundle.css
