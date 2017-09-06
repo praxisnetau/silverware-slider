@@ -120,6 +120,7 @@ class SliderComponent extends BaseComponent
         'PauseOnHover' => 'Boolean',
         'AdaptiveHeight' => 'Boolean',
         'ShowThumbs' => 'Boolean',
+        'ShowControls' => 'Boolean',
         'HideCaptionsOnMobile' => 'Boolean',
         'IconPrev' => 'FontIcon',
         'IconNext' => 'FontIcon',
@@ -149,6 +150,7 @@ class SliderComponent extends BaseComponent
         'PauseOnHover' => 1,
         'AdaptiveHeight' => 1,
         'ShowThumbs' => 0,
+        'ShowControls' => 1,
         'IconPrev' => 'chevron-left',
         'IconNext' => 'chevron-right',
         'ThumbResizeWidth' => 100,
@@ -329,6 +331,10 @@ class SliderComponent extends BaseComponent
                         $this->fieldLabel('HideCaptionsOnMobile')
                     ),
                     CheckboxField::create(
+                        'ShowControls',
+                        $this->fieldLabel('ShowControls')
+                    ),
+                    CheckboxField::create(
                         'ShowThumbs',
                         $this->fieldLabel('ShowThumbs')
                     ),
@@ -370,6 +376,7 @@ class SliderComponent extends BaseComponent
         $labels['PauseOnHover'] = _t(__CLASS__ . '.PAUSEONHOVER', 'Pause on hover');
         $labels['AdaptiveHeight'] = _t(__CLASS__ . '.ADAPTIVEHEIGHT', 'Adaptive height');
         $labels['ShowThumbs'] = _t(__CLASS__ . '.SHOWTHUMBNAILS', 'Show thumbnails');
+        $labels['ShowControls'] = _t(__CLASS__ . '.SHOWCONTROLS', 'Show controls');
         $labels['NumberOfThumbs'] = _t(__CLASS__ . '.NUMBEROFTHUMBNAILS', 'Number of thumbnails');
         $labels['IconPrev'] = _t(__CLASS__ . '.PREVIOUSBUTTONICON', 'Previous button icon');
         $labels['IconNext'] = _t(__CLASS__ . '.NEXTBUTTONICON', 'Next button icon');
@@ -484,11 +491,12 @@ class SliderComponent extends BaseComponent
             'data-pause' => $this->Pause,
             'data-speed' => $this->Speed,
             'data-gallery' => $this->dbObject('ShowThumbs')->NiceAsBoolean(),
+            'data-controls' => $this->dbObject('ShowControls')->NiceAsBoolean(),
             'data-thumb-item' => $this->NumberOfThumbs,
             'data-pause-on-hover' => $this->dbObject('PauseOnHover')->NiceAsBoolean(),
             'data-adaptive-height' => $this->dbObject('AdaptiveHeight')->NiceAsBoolean(),
-            'data-icon-prev' => $this->IconPrev,
-            'data-icon-next' => $this->IconNext,
+            'data-icon-prev' => $this->PreviousIcon,
+            'data-icon-next' => $this->NextIcon,
             'data-gallery-margin' => $this->ThumbMargin
         ];
         
@@ -617,6 +625,26 @@ class SliderComponent extends BaseComponent
         }
         
         return $classes;
+    }
+    
+    /**
+     * Answers the name of the previous icon.
+     *
+     * @return string
+     */
+    public function getPreviousIcon()
+    {
+        return ($this->IconPrev) ? $this->IconPrev : 'chevron-left';
+    }
+    
+    /**
+     * Answers the name of the next icon.
+     *
+     * @return string
+     */
+    public function getNextIcon()
+    {
+        return ($this->IconNext) ? $this->IconNext : 'chevron-right';
     }
     
     /**

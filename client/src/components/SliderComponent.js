@@ -20,6 +20,7 @@ $(function() {
       adaptiveHeight: $wrapper.data('adaptive-height'),
       pauseOnHover: $wrapper.data('pause-on-hover'),
       gallery: $wrapper.data('gallery'),
+      controls: $wrapper.data('controls'),
       thumbItem: $wrapper.data('thumb-item'),
       galleryMargin: parseInt($wrapper.data('gallery-margin')),
       prevHtml: '<i class="fa fa-' + $wrapper.data('icon-prev') + '"></i>',
