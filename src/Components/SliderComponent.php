@@ -21,6 +21,7 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\SS_List;
 use SilverStripe\View\SSViewer;
 use SilverWare\Colorpicker\Forms\ColorField;
 use SilverWare\Components\BaseComponent;
@@ -205,6 +206,13 @@ class SliderComponent extends BaseComponent
      * @config
      */
     private static $slide_tag = 'li';
+    
+    /**
+     * Holds a list of slides which override the child slides.
+     *
+     * @var SS_List
+     */
+    protected $slides;
     
     /**
      * Answers a list of field objects for the CMS interface.
@@ -408,13 +416,41 @@ class SliderComponent extends BaseComponent
     }
     
     /**
+     * Defines the slides property for the receiver.
+     *
+     * @param SS_List $slides
+     *
+     * @return $this
+     */
+    public function setSlides(SS_List $slides)
+    {
+        $list = ArrayList::create();
+        
+        foreach ($slides as $slide) {
+            $list->push($slide->setParentInstance($this));
+        }
+        
+        $this->slides = $list;
+    }
+    
+    /**
      * Answers a list of all slides within the receiver.
      *
      * @return DataList
      */
     public function getSlides()
     {
-        return $this->AllChildren();
+        return $this->slides ?: $this->getAllChildrenByClass(Slide::class);
+    }
+    
+    /**
+     * Answers true if the receiver has at least one slide.
+     *
+     * @return boolean
+     */
+    public function hasSlides()
+    {
+        return (boolean) $this->getSlides()->exists();
     }
     
     /**
