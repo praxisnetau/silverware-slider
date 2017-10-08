@@ -86,7 +86,7 @@ class SliderComponent extends BaseComponent
      * @var string
      * @config
      */
-    private static $icon = 'silverware-slider/admin/client/dist/images/icons/SliderComponent.png';
+    private static $icon = 'silverware/slider: admin/client/dist/images/icons/SliderComponent.png';
     
     /**
      * Defines an ancestor class to hide from the admin interface.
