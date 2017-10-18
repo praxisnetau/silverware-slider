@@ -3,12 +3,17 @@
 
 .slidercomponent {
   
+  .wrapper {
+    margin: 0;
+  }
+  
   .slide {
     
     position: relative;
     
     .slide-image {
       width: 100%;
+      margin: 0;
     }
     
     .slide-caption {
@@ -92,6 +97,8 @@
   
   .lSPager.lSGallery {
     
+    display: none;
+    
     margin-left: auto;
     margin-right: auto;
     
@@ -99,6 +106,10 @@
       
       font-size: 0;
       text-align: center;
+      
+      a img {
+        margin: 0;
+      }
       
       &.active,
       &:hover {
@@ -173,6 +184,10 @@
         width: $slider-control-size;
       }
       
+    }
+    
+    .lSPager.lSGallery {
+      display: block;
     }
     
   }
