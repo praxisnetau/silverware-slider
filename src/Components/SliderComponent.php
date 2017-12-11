@@ -89,6 +89,14 @@ class SliderComponent extends BaseComponent
     private static $icon = 'silverware/slider: admin/client/dist/images/icons/SliderComponent.png';
     
     /**
+     * Defines the table name to use for this object.
+     *
+     * @var string
+     * @config
+     */
+    private static $table_name = 'SilverWare_SliderComponent';
+    
+    /**
      * Defines an ancestor class to hide from the admin interface.
      *
      * @var string
