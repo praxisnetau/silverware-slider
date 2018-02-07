@@ -128,6 +128,7 @@ class SliderComponent extends BaseComponent
         'NumberOfThumbs' => 'Int',
         'PauseOnHover' => 'Boolean',
         'AdaptiveHeight' => 'Boolean',
+        'ShowPager' => 'Boolean',
         'ShowThumbs' => 'Boolean',
         'ShowControls' => 'Boolean',
         'HideCaptionsOnMobile' => 'Boolean',
@@ -158,6 +159,7 @@ class SliderComponent extends BaseComponent
         'NumberOfThumbs' => 10,
         'PauseOnHover' => 1,
         'AdaptiveHeight' => 1,
+        'ShowPager' => 1,
         'ShowThumbs' => 0,
         'ShowControls' => 1,
         'IconPrev' => 'chevron-left',
@@ -347,6 +349,10 @@ class SliderComponent extends BaseComponent
                         $this->fieldLabel('HideCaptionsOnMobile')
                     ),
                     CheckboxField::create(
+                        'ShowPager',
+                        $this->fieldLabel('ShowPager')
+                    ),
+                    CheckboxField::create(
                         'ShowControls',
                         $this->fieldLabel('ShowControls')
                     ),
@@ -391,6 +397,7 @@ class SliderComponent extends BaseComponent
         $labels['NumberOfItems'] = _t(__CLASS__ . '.NUMBEROFITEMS', 'Number of items');
         $labels['PauseOnHover'] = _t(__CLASS__ . '.PAUSEONHOVER', 'Pause on hover');
         $labels['AdaptiveHeight'] = _t(__CLASS__ . '.ADAPTIVEHEIGHT', 'Adaptive height');
+        $labels['ShowPager'] = _t(__CLASS__ . '.SHOWPAGER', 'Show pager');
         $labels['ShowThumbs'] = _t(__CLASS__ . '.SHOWTHUMBNAILS', 'Show thumbnails');
         $labels['ShowControls'] = _t(__CLASS__ . '.SHOWCONTROLS', 'Show controls');
         $labels['NumberOfThumbs'] = _t(__CLASS__ . '.NUMBEROFTHUMBNAILS', 'Number of thumbnails');
@@ -534,6 +541,7 @@ class SliderComponent extends BaseComponent
             'data-loop' => $this->dbObject('Loop')->NiceAsBoolean(),
             'data-pause' => $this->Pause,
             'data-speed' => $this->Speed,
+            'data-pager' => $this->dbObject('ShowPager')->NiceAsBoolean(),
             'data-gallery' => $this->dbObject('ShowThumbs')->NiceAsBoolean(),
             'data-controls' => $this->dbObject('ShowControls')->NiceAsBoolean(),
             'data-thumb-item' => $this->NumberOfThumbs,
