@@ -17,6 +17,7 @@ $(function() {
       speed: $wrapper.data('speed'),
       pause: $wrapper.data('pause'),
       mode: $wrapper.data('mode'),
+      pager: $wrapper.data('pager'),
       adaptiveHeight: $wrapper.data('adaptive-height'),
       pauseOnHover: $wrapper.data('pause-on-hover'),
       gallery: $wrapper.data('gallery'),
