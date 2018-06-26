@@ -18,6 +18,7 @@
 namespace SilverWare\Slider\Components;
 
 use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\ArrayList;
@@ -119,6 +120,7 @@ class SliderComponent extends BaseComponent
      * @config
      */
     private static $db = [
+        'IntroContent' => 'HTMLText',
         'Mode' => 'Varchar(16)',
         'Auto' => 'Boolean',
         'Loop' => 'Boolean',
@@ -238,6 +240,18 @@ class SliderComponent extends BaseComponent
         // Define Placeholder:
         
         $placeholder = _t(__CLASS__ . '.DROPDOWNDEFAULT', '(default)');
+        
+        // Create Main Fields:
+        
+        $fields->addFieldsToTab(
+            'Root.Main',
+            [
+                HTMLEditorField::create(
+                    'IntroContent',
+                    $this->fieldLabel('IntroContent')
+                )
+            ]
+        );
         
         // Create Style Fields:
         
@@ -414,6 +428,7 @@ class SliderComponent extends BaseComponent
         $labels['ColorControl'] = _t(__CLASS__ . '.CONTROLCOLOR', 'Control color');
         $labels['HideCaptionsOnMobile'] = _t(__CLASS__ . '.HIDECAPTIONSONMOBILE', 'Hide captions on mobile');
         $labels['ThumbMargin'] = _t(__CLASS__ . '.MARGININPX', 'Margin (in pixels)');
+        $labels['IntroContent'] = _t(__CLASS__ . '.INTROCONTENT', 'Intro content');
         
         // Answer Field Labels:
         
